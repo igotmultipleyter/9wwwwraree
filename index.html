@@ -3,77 +3,105 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>9wrwares Config</title>
+<title>9wrwares Live Config</title>
 <style>
-:root{--bg:#0b0d10;--panel:#12151a;--border:#1e2430;--text:#e8eaed;--muted:#8b93a7;--accent:#5b8cff;--good:#3dd68c}
+:root{--bg:#0b0d10;--panel:#12151a;--border:#1e2430;--text:#e8eaed;--muted:#8b93a7;--accent:#5b8cff;--good:#3dd68c;--bad:#ff5c7a}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text)}
-header{position:sticky;top:0;z-index:20;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:rgba(11,13,16,.95);border-bottom:1px solid var(--border)}
+header{position:sticky;top:0;z-index:30;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:rgba(11,13,16,.96);border-bottom:1px solid var(--border)}
 h1{margin:0;font-size:16px}.sub{color:var(--muted);font-size:12px}
 .btn{border:1px solid var(--border);background:var(--panel);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:13px}
 .btn:hover{border-color:#3a4558}
-.btn.good{background:var(--good);border-color:transparent;color:#062415;font-weight:600}
-.btn.primary{background:var(--accent);border-color:transparent;color:#fff;font-weight:600}
-.layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 58px)}
-@media(max-width:800px){.layout{grid-template-columns:1fr}}
+.btn.good{background:var(--good);border:0;color:#062415;font-weight:700}
+.btn.primary{background:var(--accent);border:0;color:#fff;font-weight:600}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 58px)}
+@media(max-width:860px){.layout{grid-template-columns:1fr}}
 nav{border-right:1px solid var(--border);background:var(--panel);padding:10px;overflow:auto;max-height:calc(100vh - 58px)}
 nav button{display:block;width:100%;text-align:left;background:0;border:0;color:var(--muted);padding:9px 10px;border-radius:8px;cursor:pointer;font-size:13px}
 nav button.active,nav button:hover{background:#1a2030;color:var(--text)}
-main{padding:16px 18px 40px;overflow:auto}
-.help{background:#141a24;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:14px;color:var(--muted);font-size:13px;line-height:1.5}
-.help b{color:var(--text)}.help code{background:#0c1016;padding:1px 5px;border-radius:4px;color:#c5d0ff}
-.status{font-size:12px;color:var(--muted);margin-bottom:10px}
-.status.ok{color:#7dffa6}.status.err{color:#ff8a9a}
+main{padding:16px 18px 50px;overflow:auto}
+.help,.setup{background:#141a24;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;color:var(--muted);font-size:13px;line-height:1.5}
+.help b,.setup b{color:var(--text)}
+.help code,.setup code{background:#0c1016;padding:1px 5px;border-radius:4px;color:#c5d0ff}
+.setup input{width:100%;margin:6px 0 10px;background:#0f1318;border:1px solid var(--border);color:var(--text);border-radius:7px;padding:8px}
+.status{font-size:13px;margin:0 0 12px;padding:8px 10px;border-radius:8px;background:#121820;border:1px solid var(--border)}
+.status.ok{border-color:#2a4a35;color:#7dffa6}
+.status.err{border-color:#5a2a35;color:#ff8a9a}
+.status.wait{border-color:#3a4558;color:#c5d0ff}
 .section{display:none}.section.active{display:block}
 .section h2{margin:0 0 4px;font-size:18px}
-.section .hint{margin:0 0 12px;color:var(--muted);font-size:12px}
+.hint{margin:0 0 12px;color:var(--muted);font-size:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
 .field{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px}
-.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;word-break:break-word}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
 .field.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 input[type=text],input[type=number],select,textarea{width:100%;background:#0f1318;border:1px solid var(--border);color:var(--text);border-radius:7px;padding:8px;font-size:13px}
-textarea{min-height:90px;font-family:ui-monospace,monospace}
+textarea{min-height:80px;font-family:ui-monospace,monospace}
 .switch{position:relative;width:42px;height:24px;flex-shrink:0}
 .switch input{opacity:0;width:0;height:0}
 .slider{position:absolute;inset:0;background:#2a3140;border-radius:99px;cursor:pointer}
 .slider:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s}
 .switch input:checked+.slider{background:var(--accent)}
 .switch input:checked+.slider:before{transform:translateX(18px)}
-.toast{position:fixed;right:14px;bottom:14px;background:#152018;border:1px solid #2a4a35;color:#b6f5d0;padding:10px 12px;border-radius:10px;opacity:0;transition:.2s;z-index:50}
+.toast{position:fixed;right:14px;bottom:14px;background:#152018;border:1px solid #2a4a35;color:#b6f5d0;padding:10px 12px;border-radius:10px;opacity:0;transition:.2s;z-index:50;max-width:320px}
 .toast.show{opacity:1}
-pre.raw{background:#0f1318;border:1px solid var(--border);border-radius:10px;padding:12px;overflow:auto;max-height:70vh;font-size:12px;color:#c5d0ff}
 </style>
 </head>
 <body>
 <header>
   <div>
-    <h1>9wrwares Config</h1>
-    <div class="sub">Tables on this page · Roblox reads config.json</div>
+    <h1>9wrwares Live Config</h1>
+    <div class="sub">Change tables here → Apply Live → Roblox picks it up (no file download)</div>
   </div>
   <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn" id="btnReload">Reload from site</button>
-    <button class="btn" id="btnReset">Reset UI defaults</button>
-    <button class="btn primary" id="btnCopy">Copy JSON</button>
-    <button class="btn good" id="btnApply">Download Apply JSON</button>
+    <button class="btn" id="btnReload">Reload</button>
+    <button class="btn good" id="btnApply">Apply Live to Roblox</button>
   </div>
 </header>
 <div class="layout">
-  <nav id="nav"></nav>
-  <main>
-    <div class="help">
-      <b>Two different URLs</b><br>
-      • This page (tables UI): <code>https://igotmultipleyter.github.io/9wwwwraree/</code><br>
-      • What the script loads: <code>https://igotmultipleyter.github.io/9wwwwraree/config.json</code><br><br>
-      Edit here → <b>Download Apply JSON</b> → upload that file in your repo as <code>config.json</code> → push → game syncs in a few seconds.
+<nav id="nav"></nav>
+<main>
+  <div class="setup">
+    <b>One-time setup (needed so Apply can write without downloading files)</b><br>
+    Create a free bin at <a href="https://jsonbin.io" target="_blank" style="color:#8ab4ff">jsonbin.io</a> → copy Bin ID + Master Key.<br>
+    Or use GitHub token method below.
+    <div style="margin-top:10px">
+      <label>Method</label>
+      <select id="method">
+        <option value="jsonbin">JSONBin (fast / recommended)</option>
+        <option value="github">GitHub repo config.json</option>
+      </select>
     </div>
-    <div class="status" id="status">Loading…</div>
-    <div id="sections"></div>
-  </main>
+    <div id="boxJsonbin">
+      <label>JSONBin Bin ID</label>
+      <input id="binId" placeholder="e.g. 67abc..." />
+      <label>JSONBin Master Key</label>
+      <input id="binKey" type="password" placeholder="X-Master-Key" />
+      <div class="hint">Public read URL used by Roblox will be shown after first Apply.</div>
+    </div>
+    <div id="boxGithub" style="display:none">
+      <label>GitHub username</label>
+      <input id="ghUser" value="igotmultipleyter"/>
+      <label>Repo name</label>
+      <input id="ghRepo" value="9wwwwraree"/>
+      <label>File path</label>
+      <input id="ghPath" value="config.json"/>
+      <label>GitHub Personal Access Token (repo scope)</label>
+      <input id="ghToken" type="password" placeholder="ghp_..." />
+      <div class="hint">Apply commits config.json. GitHub Pages can lag 30–120s.</div>
+    </div>
+  </div>
+  <div class="help">
+    <b>Do not edit the /config.json URL in the browser</b> — that page is raw data for the script only.<br>
+    Edit <b>this</b> page’s tables, then press <b>Apply Live to Roblox</b>.
+  </div>
+  <div class="status wait" id="status">Load a method + credentials, then Reload / Apply.</div>
+  <div id="sections"></div>
+</main>
 </div>
 <div class="toast" id="toast"></div>
 <script>
-const CONFIG_URL = "https://igotmultipleyter.github.io/9wwwwraree/config.json";
-
 const DEFAULT = {
   "Settings": {
     "Notifications": true,
@@ -81,7 +109,7 @@ const DEFAULT = {
     "Spectator Hide": { "Enabled": false },
     "Config Sync": {
       "Enabled": true,
-      "URL": CONFIG_URL,
+      "URL": "https://igotmultipleyter.github.io/9wwwwraree/config.json",
       "Interval": 3,
       "Notify On Apply": true
     }
@@ -112,14 +140,14 @@ const DEFAULT = {
     "Anti Curve": { "Enabled": false, "Max Angle": 120 },
     "Target": {
       "BasePart": "UpperTorso",
-      "Part Priority": ["UpperTorso","HumanoidRootPart","Head","LowerTorso"],
+      "Part Priority": ["UpperTorso", "HumanoidRootPart", "Head", "LowerTorso"],
       "Closest Point": false,
       "DB Part": "UpperTorso",
       "USP FOV Scale": 0.65
     },
     "Toggle": { "Enabled": true, "Input": "P" },
     "Keybind Mode": { "Enabled": true, "Input": "T" },
-    "Fov": { "2d-Circle": { "Visible": false, "Size": 220 } },
+    "Fov": { "2d-Circle": { "Visible": false, "Size": 220, "SizeX": 220, "SizeY": 220 } },
     "Checks": {
       "Knocked": true, "ForceField": true, "Grabbed": true, "Anti Floor": true,
       "Disable While Typing": true, "Wall Check": false, "Friend": false, "Anti Ground Shots": true
@@ -138,6 +166,7 @@ const DEFAULT = {
       "Enabled": true,
       "Auto Prediction": false,
       "Axis Mode": "XY",
+      "Value": 0.149,
       "ValueX": 0.15638291,
       "ValueY": 0.14384726,
       "ValueZ": 0.15192847,
@@ -145,7 +174,7 @@ const DEFAULT = {
     },
     "Toggle": { "Enabled": true, "Input": "M" },
     "Keybind Mode": { "Enabled": true, "Input": "C" },
-    "Fov": { "2d-Circle": { "Visible": false, "Size": 200 } },
+    "Fov": { "2d-Circle": { "Visible": false, "Size": 200, "SizeX": 200, "SizeY": 200 } },
     "Checks": {
       "Knocked": true, "ForceField": true, "Grabbed": true, "Anti Floor": true,
       "Disable While Typing": true, "Wall Check": false, "Anti Ground Shots": true
@@ -154,15 +183,16 @@ const DEFAULT = {
   "TriggerBot": {
     "Enabled": true,
     "Mode": "Silent",
-    "Prediction": { "Mode": "Single", "Value": 0.14638291 },
+    "Max Distance": 0,
+    "Prediction": { "Mode": "Single", "Value": 0.14638291, "ValueX": 0.14638291, "ValueY": 0.14638291, "ValueZ": 0.14638291 },
     "Scale": 1.2,
     "Fov": { "Enabled": true, "Sticky To Target": true, "Only With Tool": true, "X": 110, "Y": 110, "Z": 130 },
-    "Delay": { "Enabled": true, "Normal": 0.08 },
+    "Delay": { "Enabled": true, "Normal": 0.08, "Randomized": [true, 0.06, 0.1] },
     "Double Tap DB": { "Enabled": true, "Gap": 0.04, "Pause": 0.28 },
     "Toggle": { "Enabled": true, "Input": "J" },
     "Checks": {
       "Tools": true, "Knife": true, "Katana": true, "Knocked": true,
-      "ForceField": true, "Anti Floor": true, "Anti Ground": true
+      "ForceField": true, "Anti Floor": true, "Anti Ground": true, "Disable While Typing": true
     }
   },
   "Panic Mode": { "Enabled": true, "Keybind": "X" },
@@ -187,204 +217,215 @@ const DEFAULT = {
     "BuyDistance": 5000, "Cooldown": 0.08, "ArmorValue": 50,
     "Buy Armor": true, "Buy USP": true, "Buy Shotgun": false
   },
-  "_meta": { "version": 3, "source": "9wrwares-ui" }
+  "_meta": { "version": Date.now(), "source": "9wrwares-live-ui" }
 };
 
 let state = JSON.parse(JSON.stringify(DEFAULT));
+const SEP = "\x01";
 
-function toast(m){
-  const t = document.getElementById("toast");
-  t.textContent = m;
-  t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 2200);
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500)}
+function setStatus(msg, cls){const el=document.getElementById("status");el.textContent=msg;el.className="status "+(cls||"wait")}
+function saveCreds(){
+  localStorage.setItem("ninewr_live_creds", JSON.stringify({
+    method: method.value,
+    binId: binId.value.trim(),
+    binKey: binKey.value.trim(),
+    ghUser: ghUser.value.trim(),
+    ghRepo: ghRepo.value.trim(),
+    ghPath: ghPath.value.trim(),
+    ghToken: ghToken.value.trim()
+  }));
 }
-function setStatus(msg, cls){
-  const el = document.getElementById("status");
-  el.textContent = msg;
-  el.className = "status " + (cls || "");
+function loadCreds(){
+  try{
+    const c = JSON.parse(localStorage.getItem("ninewr_live_creds")||"{}");
+    if(c.method) method.value = c.method;
+    binId.value = c.binId||"";
+    binKey.value = c.binKey||"";
+    ghUser.value = c.ghUser||"igotmultipleyter";
+    ghRepo.value = c.ghRepo||"9wwwwraree";
+    ghPath.value = c.ghPath||"config.json";
+    ghToken.value = c.ghToken||"";
+  }catch(e){}
+  toggleMethod();
 }
+const method=document.getElementById("method");
+const binId=document.getElementById("binId");
+const binKey=document.getElementById("binKey");
+const ghUser=document.getElementById("ghUser");
+const ghRepo=document.getElementById("ghRepo");
+const ghPath=document.getElementById("ghPath");
+const ghToken=document.getElementById("ghToken");
+function toggleMethod(){
+  document.getElementById("boxJsonbin").style.display = method.value==="jsonbin"?"block":"none";
+  document.getElementById("boxGithub").style.display = method.value==="github"?"block":"none";
+  saveCreds();
+}
+method.onchange=toggleMethod;
+[binId,binKey,ghUser,ghRepo,ghPath,ghToken].forEach(el=>el.addEventListener("change",saveCreds));
 
-function getAt(obj, path){
-  return path.split("\x01").reduce((o,k) => (o == null ? undefined : o[k]), obj);
-}
-function setAt(obj, path, val){
-  const parts = path.split("\x01");
-  let cur = obj;
-  for (let i = 0; i < parts.length - 1; i++){
-    if (cur[parts[i]] == null || typeof cur[parts[i]] !== "object") cur[parts[i]] = {};
-    cur = cur[parts[i]];
-  }
-  cur[parts[parts.length - 1]] = val;
-}
-
+function getAt(obj,path){return path.split(SEP).reduce((o,k)=>o==null?undefined:o[k],obj)}
+function setAt(obj,path,val){const p=path.split(SEP);let c=obj;for(let i=0;i<p.length-1;i++){if(c[p[i]]==null||typeof c[p[i]]!=="object")c[p[i]]={};c=c[p[i]]}c[p[p.length-1]]=val}
 function flatten(obj, prefix, out){
-  out = out || [];
-  if (obj === null || obj === undefined) return out;
-  if (Array.isArray(obj)){
-    // show arrays as JSON text fields
-    out.push({ path: prefix, label: prefix.replace(/\x01/g, " → "), type: "json", value: obj });
-    return out;
-  }
-  if (typeof obj !== "object"){
-    const t = typeof obj === "boolean" ? "bool" : typeof obj === "number" ? "num" : "text";
-    out.push({ path: prefix, label: prefix.replace(/\x01/g, " → "), type: t, value: obj });
-    return out;
-  }
-  for (const k of Object.keys(obj)){
-    if (k === "_meta") continue;
-    const p = prefix ? prefix + "\x01" + k : k;
-    const v = obj[k];
-    if (v !== null && typeof v === "object" && !Array.isArray(v)){
-      // nested object: recurse
-      flatten(v, p, out);
-    } else if (Array.isArray(v)){
-      out.push({ path: p, label: p.replace(/\x01/g, " → "), type: "json", value: v });
-    } else {
-      const t = typeof v === "boolean" ? "bool" : typeof v === "number" ? "num" : "text";
-      out.push({ path: p, label: p.replace(/\x01/g, " → "), type: t, value: v });
-    }
-  }
+  out=out||[];
+  if(obj==null)return out;
+  if(Array.isArray(obj)){out.push({path:prefix,label:prefix.split(SEP).slice(1).join(" → ")||prefix,type:"json",value:obj});return out}
+  if(typeof obj!=="object"){out.push({path:prefix,label:prefix.split(SEP).slice(1).join(" → "),type:typeof obj==="boolean"?"bool":typeof obj==="number"?"num":"text",value:obj});return out}
+  Object.keys(obj).forEach(k=>{
+    if(k==="_meta")return;
+    const p=prefix?prefix+SEP+k:k; const v=obj[k];
+    if(v!==null&&typeof v==="object"&&!Array.isArray(v)) flatten(v,p,out);
+    else if(Array.isArray(v)) out.push({path:p,label:p.split(SEP).slice(1).join(" → "),type:"json",value:v});
+    else out.push({path:p,label:p.split(SEP).slice(1).join(" → "),type:typeof v==="boolean"?"bool":typeof v==="number"?"num":"text",value:v});
+  });
   return out;
 }
-
-function sectionNames(obj){
-  return Object.keys(obj).filter(k => k !== "_meta");
-}
-
 function render(){
-  const nav = document.getElementById("nav");
-  const root = document.getElementById("sections");
-  nav.innerHTML = "";
-  root.innerHTML = "";
-  const names = sectionNames(state);
-  names.forEach((name, idx) => {
-    const b = document.createElement("button");
-    b.textContent = name;
-    if (idx === 0) b.classList.add("active");
-    b.onclick = () => {
-      document.querySelectorAll("nav button").forEach(x => x.classList.remove("active"));
-      document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
-      b.classList.add("active");
-      document.getElementById("sec-" + idx).classList.add("active");
-    };
+  const nav=document.getElementById("nav"), root=document.getElementById("sections");
+  nav.innerHTML=""; root.innerHTML="";
+  const names=Object.keys(state).filter(k=>k!=="_meta");
+  names.forEach((name,idx)=>{
+    const b=document.createElement("button"); b.textContent=name; if(!idx)b.classList.add("active");
+    b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById("sec"+idx).classList.add("active")};
     nav.appendChild(b);
-
-    const sec = document.createElement("div");
-    sec.className = "section" + (idx === 0 ? " active" : "");
-    sec.id = "sec-" + idx;
-    sec.innerHTML = "<h2>" + name + "</h2><p class=\"hint\">Edit values then Download Apply JSON and upload as config.json</p>";
-    const grid = document.createElement("div");
-    grid.className = "grid";
-    const fields = flatten(state[name], name);
-    fields.forEach(f => {
-      const wrap = document.createElement("div");
-      wrap.className = "field" + (f.type === "bool" ? " row" : "");
-      const lab = document.createElement("label");
-      lab.textContent = f.label.replace(name + " → ", "");
-      wrap.appendChild(lab);
-      if (f.type === "bool"){
-        const sw = document.createElement("label");
-        sw.className = "switch";
-        const inp = document.createElement("input");
-        inp.type = "checkbox";
-        inp.checked = !!getAt(state, f.path);
-        inp.onchange = () => setAt(state, f.path, inp.checked);
-        const sl = document.createElement("span");
-        sl.className = "slider";
-        sw.append(inp, sl);
-        wrap.appendChild(sw);
-      } else if (f.type === "num"){
-        const inp = document.createElement("input");
-        inp.type = "number";
-        inp.step = "any";
-        inp.value = getAt(state, f.path);
-        inp.onchange = () => setAt(state, f.path, parseFloat(inp.value));
-        wrap.appendChild(inp);
-      } else if (f.type === "json"){
-        const ta = document.createElement("textarea");
-        ta.value = JSON.stringify(getAt(state, f.path), null, 2);
-        ta.onchange = () => {
-          try { setAt(state, f.path, JSON.parse(ta.value)); }
-          catch(e){ toast("Invalid JSON in field"); }
-        };
-        wrap.appendChild(ta);
+    const sec=document.createElement("div"); sec.className="section"+(idx?"":" active"); sec.id="sec"+idx;
+    sec.innerHTML=`<h2>${name}</h2><p class="hint">Edits stay on this page until you press Apply Live</p>`;
+    const grid=document.createElement("div"); grid.className="grid";
+    flatten(state[name], name).forEach(f=>{
+      const wrap=document.createElement("div"); wrap.className="field"+(f.type==="bool"?" row":"");
+      const lab=document.createElement("label"); lab.textContent=f.label||name; wrap.appendChild(lab);
+      if(f.type==="bool"){
+        const sw=document.createElement("label"); sw.className="switch";
+        const inp=document.createElement("input"); inp.type="checkbox"; inp.checked=!!getAt(state,f.path);
+        inp.onchange=()=>setAt(state,f.path,inp.checked);
+        const sl=document.createElement("span"); sl.className="slider"; sw.append(inp,sl); wrap.appendChild(sw);
+      } else if(f.type==="num"){
+        const inp=document.createElement("input"); inp.type="number"; inp.step="any"; inp.value=getAt(state,f.path);
+        inp.onchange=()=>setAt(state,f.path,parseFloat(inp.value)); wrap.appendChild(inp);
+      } else if(f.type==="json"){
+        const ta=document.createElement("textarea"); ta.value=JSON.stringify(getAt(state,f.path),null,2);
+        ta.onchange=()=>{try{setAt(state,f.path,JSON.parse(ta.value))}catch(e){toast("Invalid JSON")}}; wrap.appendChild(ta);
       } else {
-        const inp = document.createElement("input");
-        inp.type = "text";
-        const v = getAt(state, f.path);
-        inp.value = v == null ? "" : String(v);
-        inp.onchange = () => setAt(state, f.path, inp.value);
-        wrap.appendChild(inp);
+        const inp=document.createElement("input"); inp.type="text"; inp.value=getAt(state,f.path)??"";
+        inp.onchange=()=>setAt(state,f.path,inp.value); wrap.appendChild(inp);
       }
       grid.appendChild(wrap);
     });
-    sec.appendChild(grid);
-    root.appendChild(sec);
+    sec.appendChild(grid); root.appendChild(sec);
   });
-
-  // Raw JSON section
-  const rawBtn = document.createElement("button");
-  rawBtn.textContent = "Raw JSON";
-  rawBtn.onclick = () => {
-    document.querySelectorAll("nav button").forEach(x => x.classList.remove("active"));
-    document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
-    rawBtn.classList.add("active");
-    document.getElementById("sec-raw").classList.add("active");
-    document.getElementById("rawPre").textContent = JSON.stringify(state, null, 2);
-  };
-  nav.appendChild(rawBtn);
-  const rawSec = document.createElement("div");
-  rawSec.className = "section";
-  rawSec.id = "sec-raw";
-  rawSec.innerHTML = "<h2>Raw JSON</h2><p class=\"hint\">Full table the game merges</p><pre class=\"raw\" id=\"rawPre\"></pre>";
-  root.appendChild(rawSec);
 }
 
-function exportJSON(){
-  if (!state._meta) state._meta = {};
+function payload(){
+  if(!state._meta) state._meta={};
   state._meta.version = Date.now();
-  state._meta.source = "9wrwares-ui";
-  state._meta.site = "https://igotmultipleyter.github.io/9wwwwraree/";
-  return JSON.stringify(state, null, 2);
+  state._meta.source = "9wrwares-live-ui";
+  // keep Config Sync URL pointing at whatever Roblox should poll
+  if(method.value==="jsonbin" && binId.value.trim()){
+    const url = "https://api.jsonbin.io/v3/b/" + binId.value.trim() + "/latest";
+    state.Settings = state.Settings || {};
+    state.Settings["Config Sync"] = state.Settings["Config Sync"] || {};
+    state.Settings["Config Sync"].Enabled = true;
+    state.Settings["Config Sync"].URL = url;
+    state.Settings["Config Sync"].Interval = 3;
+  }
+  return state;
 }
 
-document.getElementById("btnCopy").onclick = () => {
-  navigator.clipboard.writeText(exportJSON()).then(() => toast("JSON copied"));
-};
-document.getElementById("btnApply").onclick = () => {
-  const blob = new Blob([exportJSON()], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "config.json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-  toast("Upload this as config.json in your repo");
-};
-document.getElementById("btnReset").onclick = () => {
-  state = JSON.parse(JSON.stringify(DEFAULT));
-  render();
-  toast("UI reset to defaults");
-};
-document.getElementById("btnReload").onclick = () => loadRemote();
+async function applyJsonbin(){
+  const id=binId.value.trim(), key=binKey.value.trim();
+  if(!id||!key) throw new Error("Enter JSONBin Bin ID and Master Key");
+  const body = payload();
+  const res = await fetch("https://api.jsonbin.io/v3/b/" + id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": key,
+      "X-Bin-Versioning": "false"
+    },
+    body: JSON.stringify(body)
+  });
+  if(!res.ok){
+    const t = await res.text();
+    throw new Error("JSONBin " + res.status + ": " + t.slice(0,200));
+  }
+  return "https://api.jsonbin.io/v3/b/" + id + "/latest";
+}
 
-async function loadRemote(){
-  setStatus("Loading " + CONFIG_URL + " …");
+async function applyGithub(){
+  const user=ghUser.value.trim(), repo=ghRepo.value.trim(), path=ghPath.value.trim(), token=ghToken.value.trim();
+  if(!user||!repo||!path||!token) throw new Error("Fill GitHub user, repo, path, token");
+  const api = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
+  let sha = undefined;
+  const getRes = await fetch(api, { headers: { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" }});
+  if(getRes.ok){
+    const cur = await getRes.json();
+    sha = cur.sha;
+  }
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload(), null, 2))));
+  const putRes = await fetch(api, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "9wrwares live config " + new Date().toISOString(),
+      content,
+      sha
+    })
+  });
+  if(!putRes.ok){
+    const t = await putRes.text();
+    throw new Error("GitHub " + putRes.status + ": " + t.slice(0,250));
+  }
+  return `https://${user}.github.io/${repo}/config.json`;
+}
+
+document.getElementById("btnApply").onclick = async () => {
+  saveCreds();
+  const btn = document.getElementById("btnApply");
+  btn.disabled = true;
+  setStatus("Applying live…", "wait");
   try {
-    const res = await fetch(CONFIG_URL + "?t=" + Date.now(), { cache: "no-store" });
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const data = await res.json();
-    state = data;
-    render();
-    setStatus("Loaded live config.json · version " + ((data._meta && data._meta.version) || "?"), "ok");
-    toast("Tables loaded from config.json");
+    const url = method.value === "jsonbin" ? await applyJsonbin() : await applyGithub();
+    setStatus("Applied live. Roblox URL: " + url + " · wait a few seconds in-game (script must already be running).", "ok");
+    toast("Applied live — check Roblox for Config synced");
   } catch (e) {
+    setStatus(String(e.message || e), "err");
+    toast("Apply failed");
+  }
+  btn.disabled = false;
+};
+
+async function reload(){
+  setStatus("Loading…", "wait");
+  try {
+    if(method.value==="jsonbin" && binId.value.trim()){
+      const key = binKey.value.trim();
+      const res = await fetch("https://api.jsonbin.io/v3/b/" + binId.value.trim() + "/latest", {
+        headers: key ? { "X-Master-Key": key } : {}
+      });
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      state = data.record || data;
+    } else {
+      const res = await fetch("https://igotmultipleyter.github.io/9wwwwraree/config.json?t=" + Date.now(), { cache: "no-store" });
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      state = await res.json();
+    }
+    render();
+    setStatus("Tables loaded. Edit, then Apply Live to Roblox.", "ok");
+  } catch(e) {
     state = JSON.parse(JSON.stringify(DEFAULT));
     render();
-    setStatus("Could not load config.json (" + e.message + "). Showing built-in defaults.", "err");
+    setStatus("Using built-in defaults (" + e.message + "). You can still edit and Apply Live.", "err");
   }
 }
 
-loadRemote();
+document.getElementById("btnReload").onclick = reload;
+loadCreds();
+reload();
 </script>
 </body>
 </html>

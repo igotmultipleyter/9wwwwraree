@@ -1,13 +1,47 @@
-html
-
 <!DOCTYPE html>
-
-<html>
-<head>
-<title>My Website</title>
-</head>
-<body>
-<h1>Hello World!</h1>
-<p>My first GitHub site.</p>
-</body>
-</html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>9wrwares Config</title>
+<style>
+:root{--bg:#0b0d10;--panel:#12151a;--border:#1e2430;--text:#e8eaed;--muted:#8b93a7;--accent:#5b8cff;--good:#3dd68c}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:10;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:rgba(11,13,16,.94);border-bottom:1px solid var(--border)}
+h1{margin:0;font-size:16px}.sub{color:var(--muted);font-size:12px}
+.btn{border:1px solid var(--border);background:var(--panel);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+.btn.good{background:var(--good);border:0;color:#062415;font-weight:600}
+.btn.primary{background:var(--accent);border:0;color:#fff;font-weight:600}
+.layout{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 56px)}
+nav{border-right:1px solid var(--border);background:var(--panel);padding:10px}
+nav button{display:block;width:100%;text-align:left;background:0;border:0;color:var(--muted);padding:9px 10px;border-radius:8px;cursor:pointer}
+nav button.active,nav button:hover{background:#1a2030;color:var(--text)}
+main{padding:18px;overflow:auto}
+.help{background:#141a24;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:14px;color:var(--muted);font-size:13px;line-height:1.45}
+.help code{background:#0c1016;padding:1px 5px;border-radius:4px;color:#c5d0ff}
+.section{display:none}.section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.field{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.field.row{display:flex;align-items:center;justify-content:space-between}
+input,select{width:100%;background:#0f1318;border:1px solid var(--border);color:var(--text);border-radius:7px;padding:8px}
+.switch{position:relative;width:42px;height:24px}.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#2a3140;border-radius:99px;cursor:pointer}
+.slider:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s}
+.switch input:checked+.slider{background:var(--accent)}.switch input:checked+.slider:before{transform:translateX(18px)}
+.toast{position:fixed;right:14px;bottom:14px;background:#152018;border:1px solid #2a4a35;color:#b6f5d0;padding:10px 12px;border-radius:10px;opacity:0;transition:.2s}
+.toast.show{opacity:1}
+</style></head><body>
+<header><div><h1>9wrwares Config</h1><div class="sub">Edit tables → Apply → live merge in Roblox (no full re-execute)</div></div>
+<div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+<button class="btn" id="reset">Reset</button>
+<button class="btn primary" id="copy">Copy JSON</button>
+<button class="btn good" id="apply">Apply</button>
+</div></header>
+<div class="layout"><nav id="nav"></nav><main>
+<div class="help"><b style="color:var(--text)">How it works</b><br>
+1) Set <code>Config Sync URL</code> to a raw JSON URL you control (GitHub Gist raw / Pastebin raw).<br>
+2) Run 9wrwares <b>once</b> in-game (engine with Config Sync).<br>
+3) Change values here → <b>Apply</b> → host the JSON at that URL.<br>
+4) Game poller merges into <code>getgenv()['9wrwares']</code> without re-running the whole script.</div>
+<div id="sections"></div></main></div>
+<div class="toast" id="toast"></div>
+<script src="./9wrwares_config_app.js"></script>
+</body></html>

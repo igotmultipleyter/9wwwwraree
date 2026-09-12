@@ -1,0 +1,451 @@
+{
+  "Settings": {
+    "Notifications": true,
+    "Performance Mode": {
+      "ActiveGun": true
+    },
+    "Spectator Hide": {
+      "Enabled": false
+    },
+    "Config Sync": {
+      "Enabled": true,
+      "URL": "https://igotmultipleyter.github.io/9wwwwraree/config.json",
+      "Interval": 3,
+      "Notify On Apply": true
+    }
+  },
+  "FOV Changer": {
+    "Enabled": false,
+    "Amount": 70
+  },
+  "Silent Aim": {
+    "Enabled": true,
+    "HitChance": [
+      false,
+      100
+    ],
+    "Force Hit": true,
+    "Visual Redirection": false,
+    "Scale": 1,
+    "Override Y Axis": "half",
+    "Recast": false,
+    "Max Distance": 0,
+    "Prediction": {
+      "Enabled": true,
+      "Auto Prediction": false,
+      "Axis Mode": "XY",
+      "Value": 0.147,
+      "ValueX": 0.15429184,
+      "ValueY": 0.14163852,
+      "ValueZ": 0.15290471,
+      "Bullet Speed": 1200,
+      "Close Range Clamp": {
+        "Enabled": true,
+        "Distance": 28,
+        "Scale": 0.42
+      }
+    },
+    "Ping Badge": {
+      "Enabled": false
+    },
+    "Future": {
+      "Enabled": true,
+      "Amount": 0.12,
+      "Max Studs": 6,
+      "Min Distance": 35
+    },
+    "Clamp Y Axis": {
+      "Enabled": true,
+      "Dynamic": true,
+      "Amount": 0.45
+    },
+    "Anti Curve": {
+      "Enabled": false,
+      "Max Angle": 120
+    },
+    "Target": {
+      "BasePart": "UpperTorso",
+      "Part Priority": [
+        "UpperTorso",
+        "HumanoidRootPart",
+        "Head",
+        "LowerTorso"
+      ],
+      "Closest Point": false,
+      "Closest Point Scale": 1,
+      "Closest Point Mode": "Basic",
+      "DB Part": "UpperTorso",
+      "USP FOV Scale": 0.65
+    },
+    "Toggle": {
+      "Enabled": true,
+      "Input": "P"
+    },
+    "Keybind Mode": {
+      "Enabled": true,
+      "Input": "T"
+    },
+    "Fov": {
+      "2d-Circle": {
+        "Visible": false,
+        "SizeX": 220,
+        "SizeY": 220,
+        "Size": 220,
+        "Thickness": 1,
+        "Outline Color": [
+          37,
+          150,
+          190
+        ]
+      },
+      "3d": {
+        "Enabled": false,
+        "X": 140,
+        "Y": 140,
+        "Z": 140
+      }
+    },
+    "Checks": {
+      "Knocked": true,
+      "ForceField": true,
+      "Grabbed": true,
+      "Anti Floor": true,
+      "Disable While Typing": true,
+      "Wall Check": false,
+      "Friend": false,
+      "Anti Ground Shots": true
+    }
+  },
+  "Aim Assist": {
+    "Enabled": true,
+    "Scale": 1,
+    "Lock Mode": "Camera",
+    "Max Distance": 0,
+    "Deadzone": 2,
+    "Frame Skip": 1,
+    "Sticky Mode": {
+      "Enabled": true
+    },
+    "Smoothness": [
+      true,
+      0.028
+    ],
+    "Smoothness Style": "Sine",
+    "Smoothness Direction": "Out",
+    "Prediction": {
+      "Enabled": true,
+      "Auto Prediction": false,
+      "Axis Mode": "XY",
+      "Value": 0.149,
+      "ValueX": 0.15638291,
+      "ValueY": 0.14384726,
+      "ValueZ": 0.15192847,
+      "Bullet Speed": 1200,
+      "Cam Axis": "All"
+    },
+    "Humanization": {
+      "Enabled": false,
+      "Strength": 0.25,
+      "Max Offset": 0.08
+    },
+    "Clamp Y Axis": {
+      "Enabled": true,
+      "Dynamic": true,
+      "Amount": 0.45
+    },
+    "Shake": {
+      "Enabled": false,
+      "Mode": "XY",
+      "X": 3,
+      "Y": 3,
+      "Z": 3
+    },
+    "Target": {
+      "BasePart": "UpperTorso",
+      "Closest Point": false,
+      "Closest Point Scale": 1,
+      "Closest Point Mode": "Basic"
+    },
+    "Keybind Mode": {
+      "Enabled": true,
+      "Input": "C"
+    },
+    "Toggle": {
+      "Enabled": true,
+      "Input": "M"
+    },
+    "Fov": {
+      "2d-Circle": {
+        "Visible": false,
+        "SizeX": 200,
+        "SizeY": 200,
+        "Size": 200,
+        "Thickness": 1,
+        "Outline Color": [
+          37,
+          150,
+          190
+        ]
+      },
+      "3d": {
+        "Enabled": false,
+        "X": 130,
+        "Y": 130,
+        "Z": 130
+      }
+    },
+    "Checks": {
+      "Knocked": true,
+      "ForceField": true,
+      "Grabbed": true,
+      "Anti Floor": true,
+      "Disable While Typing": true,
+      "Wall Check": false,
+      "Friend": false,
+      "Anti Ground Shots": true
+    }
+  },
+  "Panic Mode": {
+    "Enabled": true,
+    "Keybind": "X"
+  },
+  "Anti Future": {
+    "Enabled": false
+  },
+  "ESP": {
+    "Enabled": true,
+    "Keybind": "LeftAlt",
+    "Boxes": true,
+    "Names": true
+  },
+  "Damage Override": {
+    "Enabled": false,
+    "Max Damage": 100,
+    "Values": {
+      "rev": 100,
+      "db": 100,
+      "usp": 100,
+      "shotgun": 100,
+      "tactical": 100
+    }
+  },
+  "Resolver": {
+    "Enabled": true,
+    "Force": false,
+    "Method": "Detection"
+  },
+  "Auto Prediction": {
+    "Use Your Own Sets": false,
+    "0 - 50": [
+      0.11984726,
+      0.11458273
+    ],
+    "50 - 80": [
+      0.13472815,
+      0.12739481
+    ],
+    "80 - 110": [
+      0.14785263,
+      0.13961847
+    ],
+    "110 - 150": [
+      0.16147328,
+      0.15284719
+    ],
+    "150 - 200": [
+      0.17492815,
+      0.16538472
+    ]
+  },
+  "Endmath Modifier": {
+    "Velocity History": true,
+    "Custom Y-Axis": {
+      "Enabled": true,
+      "Auto Offset": true,
+      "Falling Offset": 0.22384716,
+      "Jumping Offset": 0.10847259,
+      "Allowed": {
+        "Silent Aim": true,
+        "Aim Assist": true
+      }
+    }
+  },
+  "TriggerBot": {
+    "Enabled": true,
+    "Max Distance": 0,
+    "Mode": "Silent",
+    "Prediction": {
+      "Mode": "Single",
+      "Value": 0.14638291,
+      "ValueX": 0.15184726,
+      "ValueY": 0.14092847,
+      "ValueZ": 0.14938291
+    },
+    "Scale": 1.2,
+    "Fov": {
+      "Enabled": true,
+      "Sticky To Target": true,
+      "Only With Tool": true,
+      "X": 110,
+      "Y": 110,
+      "Z": 130
+    },
+    "Delay": {
+      "Enabled": true,
+      "Normal": 0.08,
+      "Randomized": [
+        true,
+        0.06,
+        0.1
+      ],
+      "Per Gun": {
+        "db": 0.11,
+        "rev": 0.09,
+        "usp": 0.07,
+        "tactical": 0.1,
+        "shotgun": 0.12
+      }
+    },
+    "Burst": {
+      "Enabled": false,
+      "Count": 2,
+      "Pause": 0.12
+    },
+    "Double Tap DB": {
+      "Enabled": true,
+      "Gap": 0.04,
+      "Pause": 0.28
+    },
+    "Toggle": {
+      "Enabled": true,
+      "Input": "J"
+    },
+    "Checks": {
+      "Tools": true,
+      "Knife": true,
+      "Katana": true,
+      "Melee": false,
+      "Knocked": true,
+      "ForceField": true,
+      "Anti Floor": true,
+      "Disable While Typing": true,
+      "Wall Check": false,
+      "Grabbed": false,
+      "Friend": false,
+      "Anti Ground": true
+    }
+  },
+  "Anti Mod": {
+    "Enabled": true,
+    "Action": "Notify",
+    "GroupIds": [
+      996191638
+    ],
+    "Sound": "rbxassetid://330595293"
+  },
+  "Miscellaneous": {
+    "Anti Afk": true,
+    "Anti Fling": true,
+    "No Jump Cooldown": false,
+    "No Slowdown": false,
+    "No Recoil": false,
+    "Auto Reset": {
+      "Enabled": false,
+      "Health": 15
+    },
+    "Speed Multiplier": {
+      "Enabled": false,
+      "Base": 16,
+      "Shooting": 14,
+      "Reloading": 12,
+      "Idle": 16,
+      "Running": 20
+    },
+    "Spin": {
+      "Enabled": false,
+      "SpinSpeed": 20
+    },
+    "Rejoin": {
+      "Enabled": false,
+      "Keybind": "O"
+    }
+  },
+  "Weapon Modification": {
+    "Enabled": false,
+    "USP": {
+      "Spread": 0,
+      "Recoil": 0
+    },
+    "Revolver": {
+      "Spread": 0,
+      "Recoil": 0
+    },
+    "Double Barrel": {
+      "Spread": 0,
+      "Recoil": 0
+    },
+    "Tactical Shotgun": {
+      "Spread": 0,
+      "Recoil": 0
+    },
+    "Shotgun": {
+      "Spread": 0,
+      "Recoil": 0
+    }
+  },
+  "Rapid Fire": {
+    "Enabled": false
+  },
+  "Auto Swap": {
+    "Enabled": false,
+    "Keybind": "N",
+    "Allowed Weapons": [
+      "rev",
+      "db",
+      "tactical",
+      "usp"
+    ]
+  },
+  "Macro Abuse": {
+    "Enabled": false,
+    "Keybind": "B",
+    "Speed": 28
+  },
+  "Account Spoofer": {
+    "Enabled": false,
+    "UserId": 0,
+    "Auto Respawn Outfit": true
+  },
+  "Skin Changer": {
+    "Enabled": false,
+    "Skin": "galaxy"
+  },
+  "Bullet Color": {
+    "Enabled": false,
+    "Color": "red"
+  },
+  "Sky Color": {
+    "Enabled": false,
+    "Color": "blue"
+  },
+  "Custom Textures": {
+    "Enabled": false,
+    "Pack": "minecraft"
+  },
+  "Auto Buy": {
+    "Enabled": true,
+    "BuyDistance": 5000,
+    "Cooldown": 0.08,
+    "WorkOnlyOnKeybind": true,
+    "Keybind": "V",
+    "ArmorValue": 50,
+    "Buy Armor": true,
+    "Buy USP": true,
+    "Buy Shotgun": false
+  },
+  "_meta": {
+    "version": 3,
+    "source": "9wrwares-full",
+    "site": "https://igotmultipleyter.github.io/9wwwwraree/"
+  }
+}
